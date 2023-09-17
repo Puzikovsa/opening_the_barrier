@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:opening_the_barrier/models/phone.dart';
+import 'package:opening_the_barrier/pages/opening_gate_page.dart';
 import 'package:provider/provider.dart';
 
 class AddedPhone extends StatefulWidget {
@@ -41,7 +42,8 @@ class _AddedPhoneState extends State<AddedPhone> {
         ),
         ElevatedButton.icon(
           onPressed: () {
-            Provider.of<Phone>(context, listen: false).addNumber(_phoneController.text);
+            Provider.of<Phone>(context, listen: false)
+                .addNumber(_phoneController.text);
             Navigator.of(context).pop();
           },
           label: const Text(

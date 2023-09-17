@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:opening_the_barrier/models/phone.dart';
-import 'added_phone_page.dart';
+import '../widgets/access_widget.dart';
 
-class OpeningGate extends StatefulWidget {
+class OpeningGate extends StatelessWidget {
   const OpeningGate({super.key});
 
   @override
-  State<OpeningGate> createState() => _OpeningGateState();
-}
-
-class _OpeningGateState extends State<OpeningGate> {
-  @override
   Widget build(BuildContext context) {
-    String? phoneAccess = Phone.accessNumber ?? 'Здесь пока пусто';
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -32,22 +24,7 @@ class _OpeningGateState extends State<OpeningGate> {
               height: 250,
               width: 100,
             ),
-            GestureDetector(
-              child: Column(
-                children: [
-                  Text(phoneAccess,
-                    style: const TextStyle(
-                      fontSize: 26,
-                    ),
-                  ),
-
-                  const Text('Для изменения нажмите сюда'),
-                ],
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, AddedPhone.rout);
-              },
-            ),
+            const AccessWidget(),
             const SizedBox(
               height: 250,
               width: 100,

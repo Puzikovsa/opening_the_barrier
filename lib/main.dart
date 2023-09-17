@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           ),
         home: const OpeningGate(),
         routes: {
-          AddedPhone.rout: (context)  => AddedPhone(),
+          AddedPhone.rout: (context)  => const AddedPhone(),
         },
       ),
     );
