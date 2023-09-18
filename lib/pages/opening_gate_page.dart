@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:opening_the_barrier/models/phone.dart';
 import '../widgets/access_widget.dart';
 
 class OpeningGate extends StatelessWidget {
@@ -30,7 +32,9 @@ class OpeningGate extends StatelessWidget {
               width: 100,
             ),
             FloatingActionButton.extended(
-              onPressed: () {},
+              onPressed: () {
+                FlutterPhoneDirectCaller.callNumber(Phone.accessNumber!);
+              },
               backgroundColor: Colors.green,
               label: const Text(
                 'Открыть',
