@@ -10,15 +10,14 @@ class Phone extends ChangeNotifier {
   Future<void> addNumber(String number) async {
     final prefs = await preferences;
     prefs.clear();
-    final num = prefs.setString(key, number);
+    prefs.setString(key, number);
     accessNumber = number;
     notifyListeners();
   }
 
-  Future<String?> changeNumber() async {
+  Future<void> changeNumber() async {
     final prefs = await preferences;
     accessNumber = prefs.getString(key);
-    return accessNumber;
   }
 
   String? getNumber() {
