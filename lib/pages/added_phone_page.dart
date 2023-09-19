@@ -32,7 +32,7 @@ class _AddedPhoneState extends State<AddedPhone> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Введите номер телефона начиная с 8',
                 ),
@@ -40,6 +40,7 @@ class _AddedPhoneState extends State<AddedPhone> {
                 controller: _phoneController,
                 maxLength: 11,
                 textAlign: TextAlign.center,
+                textAlignVertical: TextAlignVertical.center,
               ),
             ),
           ),
@@ -47,7 +48,9 @@ class _AddedPhoneState extends State<AddedPhone> {
             onPressed: () {
               if (_phoneController.text.isEmpty ||
                   _phoneController.text.length < 11 ||
-              !_phoneController.text.startsWith('8')) {
+                  !_phoneController.text.startsWith('8')) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Номер введен некорректно')));
                 return;
               }
               Provider.of<Phone>(context, listen: false)

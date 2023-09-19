@@ -12,7 +12,7 @@ class AccessWidget extends StatelessWidget {
         future: Provider.of<Phone>(context, listen: false).changeNumber(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           return Container(
-            height: 100,
+            height: 90,
             width: 300,
             decoration: BoxDecoration(
               border: Border.all(
@@ -22,29 +22,36 @@ class AccessWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
               color: Colors.greenAccent,
             ),
-            child: GestureDetector(
-              child: Column(
-                children: [
-                  Text(
-                    Provider.of<Phone>(context).getNumber() ??
-                        'Здесь пока пусто',
-                    style: const TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                    ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 18,
+                ),
+                GestureDetector(
+                  child: Column(
+                    children: [
+                      Text(
+                        Provider.of<Phone>(context).getNumber() ??
+                            'Здесь пока пусто',
+                        style: const TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Text(
+                        'Для изменения нажмите сюда',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontStyle: FontStyle.italic
+                        ),
+                      ),
+                    ],
                   ),
-                  const Text(
-                    'Для изменения нажмите сюда',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontStyle: FontStyle.italic
-                    ),
-                  ),
-                ],
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, AddedPhone.rout);
-              },
+                  onTap: () {
+                    Navigator.pushNamed(context, AddedPhone.rout);
+                  },
+                ),
+              ],
             ),
           );
         });
