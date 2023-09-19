@@ -6,9 +6,9 @@
         android:required="false" />
     <uses-permission android:name="android.permission.CALL_PHONE"/>
    <application
-        android:label="opening_the_barrier"
+        android:label="Открыть шлагбаум"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

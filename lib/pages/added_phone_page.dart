@@ -38,15 +38,16 @@ class _AddedPhoneState extends State<AddedPhone> {
                 ),
                 keyboardType: TextInputType.phone,
                 controller: _phoneController,
-                maxLength: 10,
+                maxLength: 11,
                 textAlign: TextAlign.center,
-
               ),
             ),
           ),
           FloatingActionButton.extended(
             onPressed: () {
-              if (_phoneController.text.isEmpty) {
+              if (_phoneController.text.isEmpty ||
+                  _phoneController.text.length < 11 ||
+              !_phoneController.text.startsWith('8')) {
                 return;
               }
               Provider.of<Phone>(context, listen: false)

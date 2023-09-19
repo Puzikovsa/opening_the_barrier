@@ -29,14 +29,14 @@ class AccessWidget extends StatelessWidget {
                     Provider.of<Phone>(context).getNumber() ??
                         'Здесь пока пусто',
                     style: const TextStyle(
-                        fontSize: 34,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                     ),
                   ),
                   const Text(
                     'Для изменения нажмите сюда',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       fontStyle: FontStyle.italic
                     ),
                   ),
