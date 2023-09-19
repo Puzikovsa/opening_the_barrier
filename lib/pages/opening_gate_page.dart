@@ -35,11 +35,15 @@ class OpeningGate extends StatelessWidget {
               onPressed: () {
                 FlutterPhoneDirectCaller.callNumber(Phone.accessNumber!);
               },
-              backgroundColor: Colors.green,
+              backgroundColor: Colors.limeAccent,
+              splashColor: Colors.redAccent,
+              icon: const Icon(Icons.phone,
+              color: Colors.black,),
               label: const Text(
                 'Открыть',
                 style: TextStyle(
                   fontSize: 24,
+                  color: Colors.black
                 ),
               ),
             ),

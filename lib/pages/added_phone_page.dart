@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:opening_the_barrier/models/phone.dart';
-import 'package:opening_the_barrier/pages/opening_gate_page.dart';
 import 'package:provider/provider.dart';
 
 class AddedPhone extends StatefulWidget {
@@ -27,42 +26,51 @@ class _AddedPhoneState extends State<AddedPhone> {
           ),
         ),
       ),
-      body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: TextField(
-              decoration: const InputDecoration(
-                labelText: 'Введите номер телефона',
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Введите номер телефона начиная с 8',
+                ),
+                keyboardType: TextInputType.phone,
+                controller: _phoneController,
+                maxLength: 10,
+                textAlign: TextAlign.center,
+
               ),
-              keyboardType: TextInputType.phone,
-              controller: _phoneController,
             ),
           ),
-        ),
-        ElevatedButton.icon(
-          onPressed: () {
-            Provider.of<Phone>(context, listen: false)
-                .addNumber(_phoneController.text);
-            Navigator.of(context).pop();
-          },
-          label: const Text(
-            'Установить',
-            style: TextStyle(
+          FloatingActionButton.extended(
+            onPressed: () {
+              if (_phoneController.text.isEmpty) {
+                return;
+              }
+              Provider.of<Phone>(context, listen: false)
+                  .addNumber(_phoneController.text);
+              Navigator.of(context).pop();
+            },
+            label: const Text(
+              'Установить',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
+            icon: const Icon(
+              Icons.add,
               color: Colors.black,
-              fontSize: 18,
             ),
-          ),
-          icon: const Icon(
-            Icons.add,
-            color: Colors.black,
-          ),
-          style: ElevatedButton.styleFrom(
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            backgroundColor: Theme.of(context).colorScheme.secondary,
-          ),
-        )
-      ]),
+            // style: ElevatedButton.styleFrom(
+            //   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            //   backgroundColor: Theme.of(context).colorScheme.secondary,
+            // ),
+          )
+        ],
+      ),
     );
   }
 }

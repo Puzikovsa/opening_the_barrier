@@ -11,21 +11,41 @@ class AccessWidget extends StatelessWidget {
     return FutureBuilder(
         future: Provider.of<Phone>(context, listen: false).changeNumber(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          return GestureDetector(
-            child: Column(
-              children: [
-                Text(
-                  Provider.of<Phone>(context).getNumber() ?? 'Здесь пока пусто',
-                  style: const TextStyle(
-                    fontSize: 26,
-                  ),
-                ),
-                const Text('Для изменения нажмите сюда'),
-              ],
+          return Container(
+            height: 100,
+            width: 300,
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1,
+                color: Colors.teal,
+              ),
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.greenAccent,
             ),
-            onTap: () {
-              Navigator.pushNamed(context, AddedPhone.rout);
-            },
+            child: GestureDetector(
+              child: Column(
+                children: [
+                  Text(
+                    Provider.of<Phone>(context).getNumber() ??
+                        'Здесь пока пусто',
+                    style: const TextStyle(
+                        fontSize: 34,
+                        fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Text(
+                    'Для изменения нажмите сюда',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontStyle: FontStyle.italic
+                    ),
+                  ),
+                ],
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, AddedPhone.rout);
+              },
+            ),
           );
         });
   }
